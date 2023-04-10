@@ -39,18 +39,35 @@ img {
 .cards__block {
     display: grid;
     gap: 1.5em;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+        'one one two five'
+        'three four four five';
+}
+
+.people__card:nth-child(1) {
+    grid-area: one;
+}
+
+.people__card:nth-child(2) {
+    grid-area: two;
+}
+
+.people__card:nth-child(3) {
+    grid-area: three;
+}
+
+.people__card:nth-child(4) {
+    grid-area: four;
+}
+
+.people__card:nth-child(5) {
+    grid-area: five;
 }
 
 .people__card {
     padding: 1.5em;
     border-radius: 10px;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
-}
-
-.people__card:last-child {
-    grid-column-start: 4;
-    grid-row: 1 / 3;
 }
 
 .bg--purple {
@@ -67,19 +84,6 @@ img {
 
 .bg--dark {
     background-color: var(--dark-blackish-blue);
-}
-
-.row-wide {
-    grid-row: span 2;
-}
-
-.medium {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-.col-wide {
-    grid-column: span 2;
 }
 
 .profile {
@@ -127,12 +131,24 @@ img {
 @media (max-width: 800px) {
 
     .cards__block {
-        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'one'
+            'two'
+            'three'
+            'four'
+            'five';
     }
 
-    .people__card {
-        grid-row: span 1 !important;
-        grid-column: span 1 !important;
+}
+
+@media (min-width: 800px) and (max-width: 950px) {
+
+    .cards__block {
+        grid-template-areas: 
+            'one one'
+            'two five'
+            'three five'
+            'four four';
     }
 
 }
